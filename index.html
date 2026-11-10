@@ -60,6 +60,9 @@
       visibility: visible;
       transform: translateY(0);
     }
+    .floating-assistant {
+      box-shadow: 0 20px 60px rgba(15, 23, 42, 0.45);
+    }
   </style>
 </head>
 <body class="h-full flex flex-col font-sans bg-slate-900 text-slate-100 antialiased selection:bg-rose-500 selection:text-white">
@@ -597,9 +600,9 @@
             <i class="fa-solid fa-robot"></i>
           </div>
           <div>
-            <h3 class="font-display font-bold text-white text-sm leading-none">Three-D Technical Assistant</h3>
+            <h3 class="font-display font-bold text-white text-sm leading-none">3D TradeBuddy</h3>
             <span class="text-[10px] text-emerald-400 flex items-center gap-1 mt-1">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Offline Knowledge Engine Ready
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Product FAQ ready
             </span>
           </div>
         </div>
@@ -629,12 +632,12 @@
               <i class="fa-solid fa-robot"></i>
             </div>
             <div class="bg-slate-800 border border-slate-700/80 p-3.5 rounded-2xl rounded-tl-none text-slate-200 max-w-[85%] leading-relaxed">
-              Hello! I am Three-D’s Technical Spec Assistant. I can help you with:
+              Hi, I’m <b>3D TradeBuddy</b>. I can help with the most common customer questions, including:
               <ul class="list-disc pl-4 mt-2 space-y-1 text-slate-300">
-                <li>Matching crimping tools (e.g. <b>HP240</b>) to lug sizes</li>
-                <li>Heatshrink specs (Polyolefin 90°C vs PTFE 250°C)</li>
-                <li>UNI-T Multimeter selection (<b>UT33+</b> vs <b>UT593</b>)</li>
-                <li>Tool warranty, repair times &amp; regional shipping</li>
+                <li>Which crimper fits a cable size</li>
+                <li>Which heatshrink or gland to use</li>
+                <li>Which UNI-T meter suits the job</li>
+                <li>Product availability and trade support</li>
               </ul>
             </div>
           </div>
@@ -749,6 +752,16 @@
       </div>
     </aside>
   </div>
+
+  <button id="floatingTradeBuddy" onclick="toggleDrawer('agentDrawer'); setAgentTab('chat');" class="floating-assistant fixed bottom-5 right-5 z-50 bg-gradient-to-r from-rose-600 to-orange-500 text-white rounded-2xl border border-white/10 px-3 py-2 flex items-center gap-3 hover:scale-[1.02] transition-all">
+    <div class="w-11 h-11 rounded-xl bg-slate-950/20 border border-white/10 flex items-center justify-center text-lg">
+      <i class="fa-solid fa-robot"></i>
+    </div>
+    <div class="text-left leading-tight pr-1">
+      <div class="font-display font-bold text-sm">Hi, I’m 3D TradeBuddy</div>
+      <div class="text-[10px] uppercase tracking-[0.18em] text-rose-100/80">Ask a product question</div>
+    </div>
+  </button>
 
   <!-- ========================================================================= -->
   <!-- MODAL: TRADE ACCOUNT REQUEST                                              -->
@@ -1260,7 +1273,24 @@
       }
     }
 
-    function handleChatSubmit(e) {
+    async function askAgent(promptText) {
+      const endpoint = 'http://localhost:8001/api/ask';
+      const params = new URLSearchParams({ query: promptText });
+
+      try {
+        const response = await fetch(`${endpoint}?${params.toString()}`);
+        if (!response.ok) {
+          throw new Error('Agent service unavailable');
+        }
+
+        const data = await response.json();
+        return data.answer || matchKnowledgeBase(promptText);
+      } catch (error) {
+        return matchKnowledgeBase(promptText);
+      }
+    }
+
+    async function handleChatSubmit(e) {
       e.preventDefault();
       const input = document.getElementById('chatInput');
       const val = input.value.trim();
@@ -1269,18 +1299,14 @@
       appendChatMessage(val, 'user');
       input.value = '';
 
-      setTimeout(() => {
-        const response = matchKnowledgeBase(val);
-        appendChatMessage(response, 'bot');
-      }, 300);
+      const response = await askAgent(val);
+      appendChatMessage(response, 'bot');
     }
 
-    function sendQuickPrompt(promptText) {
+    async function sendQuickPrompt(promptText) {
       appendChatMessage(promptText, 'user');
-      setTimeout(() => {
-        const response = matchKnowledgeBase(promptText);
-        appendChatMessage(response, 'bot');
-      }, 300);
+      const response = await askAgent(promptText);
+      appendChatMessage(response, 'bot');
     }
 
     function appendChatMessage(text, sender) {
