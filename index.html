@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-slate-900">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Three-D Agencies | Premier B2B Electrical & Cable Accessories Partner</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              red: '#e11d48',
+              orange: '#ea580c',
+              dark: '#0f172a',
+              slate: '#1e293b',
+              accent: '#0284c7',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbars and Drawer Transitions */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: #0f172a; }
+    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: #ea580c; }
+    
+    .drawer-overlay {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(4px);
+    }
+    
+    .mega-menu {
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .group:hover .mega-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="h-full flex flex-col font-sans bg-slate-900 text-slate-100 antialiased selection:bg-rose-500 selection:text-white">
+
+  <!-- TOP ANNOUNCEMENT BAR -->
+  <div class="bg-gradient-to-r from-rose-700 via-orange-600 to-amber-600 px-4 py-2 text-xs font-semibold text-white shadow-md">
+    <div class="max-w-7xl mx-auto flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <span class="bg-black/20 px-2 py-0.5 rounded text-[10px] uppercase tracking-wider">SADEC Distribution</span>
+        <span>Serving South Africa, Lesotho, Botswana, Mozambique, Namibia & Zambia since 1977</span>
+      </div>
+      <div class="hidden md:flex items-center gap-6">
+        <a href="tel:+27113923804" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-phone text-[10px]"></i> +27 (11) 392-3804</a>
+        <a href="mailto:sales@three-d.co.za" class="hover:underline flex items-center gap-1"><i class="fa-solid fa-envelope text-[10px]"></i> sales@three-d.co.za</a>
+        <span class="text-rose-200">Main Hub: Johannesburg, Gauteng</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STICKY MAIN HEADER -->
+  <header class="sticky top-0 z-40 bg-slate-900/95 border-b border-slate-800 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20 gap-4">
+        
+        <!-- BRAND LOGO -->
+        <a href="#" class="flex items-center gap-3 group shrink-0">
+          <div class="w-11 h-11 bg-gradient-to-br from-rose-600 to-orange-500 rounded-xl flex items-center justify-center font-display font-extrabold text-white text-xl shadow-lg shadow-rose-900/40 group-hover:scale-105 transition-transform">
+            3D
+          </div>
+          <div class="flex flex-col">
+            <span class="font-display font-bold text-xl tracking-tight text-white leading-none">THREE-D</span>
+            <span class="text-[10px] font-semibold text-rose-500 uppercase tracking-widest mt-1">AGENCIES (PTY) LTD</span>
+          </div>
+        </a>
+
+        <!-- PREDICTIVE INSTANT SEARCH BAR -->
+        <div class="relative flex-1 max-w-xl hidden md:block">
+          <div class="relative">
+            <input 
+              type="text" 
+              id="searchInput"
+              placeholder="Search SKUs, specs (e.g. HP240, UT33+, 120mm² lug, heatshrink)..." 
+              class="w-full bg-slate-800/90 text-sm text-slate-100 placeholder-slate-400 pl-11 pr-10 py-3 rounded-xl border border-slate-700 focus:outline-none focus:border-rose-500 focus:ring-2 focus:ring-rose-500/20 transition-all"
+              oninput="handleSearch(this.value)"
+            />
+            <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-400 text-sm"></i>
+            <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3 top-3 text-slate-400 hover:text-white p-1">
+              <i class="fa-solid fa-circle-xmark"></i>
+            </button>
+          </div>
+
+          <!-- SEARCH PREDICTIVE DROPDOWN -->
+          <div id="searchResults" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-800 border border-slate-700 rounded-xl shadow-2xl z-50 overflow-hidden max-h-96 overflow-y-auto">
+            <!-- Dynamically Rendered -->
+          </div>
+        </div>
+
+        <!-- HEADER CONTROLS & DRAWERS -->
+        <div class="flex items-center gap-3">
+          
+          <!-- AI Assistant Drawer Toggle -->
+          <button onclick="toggleDrawer('agentDrawer')" class="flex items-center gap-2 bg-gradient-to-r from-rose-600 to-orange-600 hover:from-rose-500 hover:to-orange-500 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-md transition-all">
+            <i class="fa-solid fa-robot text-sm animate-pulse"></i>
+            <span class="hidden sm:inline">AI Spec &amp; BOM Assistant</span>
+          </button>
+
+          <!-- Trade Account Application Modal Button -->
+          <button onclick="openTradeModal()" class="hidden sm:flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold px-3.5 py-2.5 rounded-xl border border-slate-700 transition-all">
+            <i class="fa-solid fa-user-shield text-rose-400"></i>
+            <span>Trade Account</span>
+          </button>
+
+          <!-- RFQ Quote Cart Drawer Toggle -->
+          <button onclick="toggleDrawer('rfqDrawer')" class="relative flex items-center justify-center w-11 h-11 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-xl border border-slate-700 transition-all">
+            <i class="fa-solid fa-file-invoice-dollar text-base text-rose-500"></i>
+            <span id="cartBadge" class="absolute -top-1.5 -right-1.5 bg-rose-600 text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center border-2 border-slate-900 shadow">
+              0
+            </span>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- NAVIGATION BAR & MEGA MENU -->
+      <nav class="hidden lg:flex items-center justify-between border-t border-slate-800/80 py-2.5 text-xs font-medium text-slate-300">
+        <div class="flex items-center gap-8">
+          
+          <!-- MEGA MENU ITEM 1 -->
+          <div class="relative group py-1">
+            <button class="flex items-center gap-1.5 hover:text-white transition-colors">
+              <i class="fa-solid fa-plug text-rose-500"></i> Lugs &amp; Terminals <i class="fa-solid fa-chevron-down text-[10px] text-slate-500 group-hover:rotate-180 transition-transform"></i>
+            </button>
+            <div class="mega-menu absolute top-full left-0 w-[550px] bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-2xl z-50 grid grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-display font-bold text-white text-sm mb-3 flex items-center gap-2 border-b border-slate-700 pb-2">
+                  <i class="fa-solid fa-bolt text-rose-500"></i> Copper Cable Lugs
+                </h4>
+                <ul class="space-y-2 text-slate-400 text-xs">
+                  <li><a href="#" onclick="filterByCategory('Lugs')" class="hover:text-rose-400 transition-colors">Standard Copper Lugs (10mm² - 630mm²)</a></li>
+                  <li><a href="#" onclick="filterByCategory('Lugs')" class="hover:text-rose-400 transition-colors">Heavy Duty Transformer Lugs</a></li>
+                  <li><a href="#" onclick="filterByCategory('Lugs')" class="hover:text-rose-400 transition-colors">Long Palm &amp; Long Barrel Lugs</a></li>
+                  <li><a href="#" onclick="filterByCategory('Lugs')" class="hover:text-rose-400 transition-colors">Bi-Metallic Aluminium/Copper Lugs</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-display font-bold text-white text-sm mb-3 flex items-center gap-2 border-b border-slate-700 pb-2">
+                  <i class="fa-solid fa-circle-dot text-orange-500"></i> Pre-Insulated Terminals
+                </h4>
+                <ul class="space-y-2 text-slate-400 text-xs">
+                  <li><a href="#" onclick="filterByCategory('Terminals')" class="hover:text-rose-400 transition-colors">Red, Blue, Yellow Ring Terminals</a></li>
+                  <li><a href="#" onclick="filterByCategory('Terminals')" class="hover:text-rose-400 transition-colors">Spade &amp; Push-On Disconnects</a></li>
+                  <li><a href="#" onclick="filterByCategory('Terminals')" class="hover:text-rose-400 transition-colors">Pin &amp; Bootlace Ferrules (Single/Twin)</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- MEGA MENU ITEM 2 -->
+          <div class="relative group py-1">
+            <button class="flex items-center gap-1.5 hover:text-white transition-colors">
+              <i class="fa-solid fa-[#1e293b] fa-temperature-arrow-down text-orange-500"></i> Heatshrink &amp; Sleeving <i class="fa-solid fa-chevron-down text-[10px] text-slate-500 group-hover:rotate-180 transition-transform"></i>
+            </button>
+            <div class="mega-menu absolute top-full left-0 w-[450px] bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-2xl z-50 grid grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-display font-bold text-white text-sm mb-3 border-b border-slate-700 pb-2">Polyolefin Tubing</h4>
+                <ul class="space-y-2 text-slate-400 text-xs">
+                  <li><a href="#" onclick="filterByCategory('Heatshrink')" class="hover:text-rose-400 transition-colors">Thin Wall Standard (2:1)</a></li>
+                  <li><a href="#" onclick="filterByCategory('Heatshrink')" class="hover:text-rose-400 transition-colors">Dual Wall Adhesive Lined (3:1)</a></li>
+                  <li><a href="#" onclick="filterByCategory('Heatshrink')" class="hover:text-rose-400 transition-colors">Medium &amp; Heavy Wall Busbar Tubing</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-display font-bold text-white text-sm mb-3 border-b border-slate-700 pb-2">Specialist Sleeving</h4>
+                <ul class="space-y-2 text-slate-400 text-xs">
+                  <li><a href="#" onclick="filterByCategory('Heatshrink')" class="hover:text-rose-400 transition-colors">High-Temp PTFE (250°C)</a></li>
+                  <li><a href="#" onclick="filterByCategory('Heatshrink')" class="hover:text-rose-400 transition-colors">Clear Label Protection Tubing</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- MEGA MENU ITEM 3 -->
+          <div class="relative group py-1">
+            <button class="flex items-center gap-1.5 hover:text-white transition-colors">
+              <i class="fa-solid fa-screwdriver-wrench text-amber-500"></i> Tools &amp; Instruments <i class="fa-solid fa-chevron-down text-[10px] text-slate-500 group-hover:rotate-180 transition-transform"></i>
+            </button>
+            <div class="mega-menu absolute top-full left-0 w-[500px] bg-slate-800 border border-slate-700 rounded-2xl p-6 shadow-2xl z-50 grid grid-cols-2 gap-6">
+              <div>
+                <h4 class="font-display font-bold text-white text-sm mb-3 border-b border-slate-700 pb-2">Crimping &amp; Cutting</h4>
+                <ul class="space-y-2 text-slate-400 text-xs">
+                  <li><a href="#" onclick="filterByCategory('Tools')" class="hover:text-rose-400 transition-colors">HP240 Hydraulic Crimper</a></li>
+                  <li><a href="#" onclick="filterByCategory('Tools')" class="hover:text-rose-400 transition-colors">Ratchet Crimpers (Pre-Insulated)</a></li>
+                  <li><a href="#" onclick="filterByCategory('Tools')" class="hover:text-rose-400 transition-colors">Heavy Duty Cable Cutters</a></li>
+                </ul>
+              </div>
+              <div>
+                <h4 class="font-display font-bold text-white text-sm mb-3 border-b border-slate-700 pb-2">UNI-T Test Gear</h4>
+                <ul class="space-y-2 text-slate-400 text-xs">
+                  <li><a href="#" onclick="filterByCategory('Instruments')" class="hover:text-rose-400 transition-colors">UT33+ Compact Digital Multimeter</a></li>
+                  <li><a href="#" onclick="filterByCategory('Instruments')" class="hover:text-rose-400 transition-colors">UT593 Multifunction Installation Tester</a></li>
+                  <li><a href="#" onclick="filterByCategory('Instruments')" class="hover:text-rose-400 transition-colors">Thermal Imagers &amp; Clamp Meters</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- LINK 4 -->
+          <a href="#" onclick="filterByCategory('All')" class="hover:text-white transition-colors">Browse Full Catalog</a>
+        </div>
+
+        <div class="flex items-center gap-6">
+          <span class="text-slate-500">Official Distributor:</span>
+          <span class="font-bold text-slate-300">UNI-T</span>
+          <span class="font-bold text-slate-300">SapiSelco</span>
+          <span class="font-bold text-slate-300">Makita</span>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO BANNER & SEARCH REINFORCEMENT -->
+  <section class="relative bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 py-16 lg:py-20 overflow-hidden border-b border-slate-800">
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#1e293b15_1px,transparent_1px),linear-gradient(to_bottom,#1e293b15_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- HERO TEXT CONTENT -->
+        <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-400 text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+            Established 1977 • 47+ Years Industrial Excellence
+          </div>
+          
+          <h1 class="font-display font-extrabold text-3xl sm:text-5xl lg:text-6xl text-white tracking-tight leading-tight">
+            Southern Africa’s Premier <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 via-orange-400 to-amber-400">Cable Accessories</span> Partner
+          </h1>
+
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0">
+            Direct wholesale supplier of heavy-duty copper lugs, pre-insulated terminals, dual-wall heatshrink tubing, hydraulic crimping tools, and official UNI-T measurement equipment.
+          </p>
+
+          <!-- BADGES & CTAS -->
+          <div class="pt-2 flex flex-wrap justify-center lg:justify-start gap-4">
+            <button onclick="openTradeModal()" class="bg-gradient-to-r from-rose-600 to-orange-600 hover:from-rose-500 hover:to-orange-500 text-white font-bold text-sm px-6 py-3.5 rounded-xl shadow-xl shadow-rose-950/50 hover:scale-105 transition-all flex items-center gap-2">
+              <i class="fa-solid fa-file-signature"></i> Request Trade Account
+            </button>
+            <button onclick="toggleDrawer('agentDrawer'); setAgentTab('bom');" class="bg-slate-800 hover:bg-slate-700 text-slate-100 font-semibold text-sm px-6 py-3.5 rounded-xl border border-slate-700 transition-all flex items-center gap-2">
+              <i class="fa-solid fa-list-check text-rose-400"></i> Quick BOM / SKU Order
+            </button>
+          </div>
+
+          <!-- REGIONAL TRUST STAMP -->
+          <div class="pt-6 border-t border-slate-800/80 grid grid-cols-3 gap-4 text-center lg:text-left text-xs">
+            <div>
+              <div class="font-bold text-white text-base font-display">10,000+</div>
+              <div class="text-slate-400 mt-0.5">SKUs in Stock</div>
+            </div>
+            <div>
+              <div class="font-bold text-white text-base font-display">6 Countries</div>
+              <div class="text-slate-400 mt-0.5">SADEC Export Hub</div>
+            </div>
+            <div>
+              <div class="font-bold text-white text-base font-display">24 Hour</div>
+              <div class="text-slate-400 mt-0.5">Dispatch Turnaround</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- HERO VISUAL MOCKUP CARD -->
+        <div class="lg:col-span-5 relative">
+          <div class="bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/80 rounded-3xl p-6 shadow-2xl relative overflow-hidden">
+            <div class="flex items-center justify-between pb-4 border-b border-slate-700/60 mb-6">
+              <div class="flex items-center gap-2">
+                <div class="w-3 h-3 rounded-full bg-rose-500"></div>
+                <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+              </div>
+              <span class="text-[11px] font-mono text-slate-400">JHB Main Warehouse Dispatch Status</span>
+            </div>
+
+            <!-- FEATURED TOP SELLER INSIDE HERO -->
+            <div class="space-y-4">
+              <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/50 flex items-center gap-4">
+                <div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-1 shrink-0 overflow-hidden">
+                  <img src="3dee pictures/image_5.png" alt="HP240 Hydraulic Crimper" class="max-h-full max-w-full object-contain">
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between">
+                    <h4 class="font-bold text-white text-sm truncate">HP240 Hydraulic Crimper</h4>
+                    <span class="text-xs font-semibold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/40">In Stock</span>
+                  </div>
+                  <p class="text-xs text-slate-400 mt-0.5">16mm² - 240mm² Crimp Range • Die Set Included</p>
+                </div>
+              </div>
+
+              <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/50 flex items-center gap-4">
+                <div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-1 shrink-0 overflow-hidden">
+                  <img src="3dee pictures/image_3.png" alt="UNI-T UT33+ Multimeter" class="max-h-full max-w-full object-contain">
+                </div>
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between">
+                    <h4 class="font-bold text-white text-sm truncate">UNI-T UT33+ Multimeter</h4>
+                    <span class="text-xs font-semibold text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/40">In Stock</span>
+                  </div>
+                  <p class="text-xs text-slate-400 mt-0.5">Palm Size • CAT II 600V • DIY / Pro Electrical</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- BOT PROMPT FLOATING CARD -->
+            <div onclick="toggleDrawer('agentDrawer')" class="mt-6 bg-gradient-to-r from-rose-900/40 to-orange-900/40 border border-rose-500/30 p-3.5 rounded-xl flex items-center justify-between cursor-pointer hover:border-rose-500/60 transition-all">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-rose-600 flex items-center justify-center text-white text-xs">
+                  <i class="fa-solid fa-robot"></i>
+                </div>
+                <span class="text-xs font-semibold text-slate-200">Have a spec question? Ask our AI Assistant</span>
+              </div>
+              <i class="fa-solid fa-arrow-right text-xs text-rose-400"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CATALOG CONTENT AREA -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    
+    <!-- CATALOG HEADER & FILTER BAR -->
+    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-6 border-b border-slate-800">
+      <div>
+        <h2 class="font-display font-bold text-2xl text-white flex items-center gap-3">
+          Industrial Product Catalog
+          <span id="productCountBadge" class="text-xs font-sans font-semibold bg-slate-800 text-rose-400 px-3 py-1 rounded-full border border-slate-700">6 Products</span>
+        </h2>
+        <p class="text-slate-400 text-xs mt-1">Select items to generate a Request For Quote (RFQ) or download datasheets.</p>
+      </div>
+
+      <!-- FILTER BUTTONS -->
+      <div class="flex flex-wrap items-center gap-2 text-xs" id="filterBtnGroup">
+        <button onclick="filterByCategory('All')" class="filter-btn active bg-rose-600 text-white font-semibold px-4 py-2 rounded-lg transition-all">All Products</button>
+        <button onclick="filterByCategory('Lugs')" class="filter-btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-4 py-2 rounded-lg border border-slate-700 transition-all">Lugs &amp; Terminals</button>
+        <button onclick="filterByCategory('Heatshrink')" class="filter-btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-4 py-2 rounded-lg border border-slate-700 transition-all">Heatshrink</button>
+        <button onclick="filterByCategory('Tools')" class="filter-btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-4 py-2 rounded-lg border border-slate-700 transition-all">Hydraulic Tools</button>
+        <button onclick="filterByCategory('Instruments')" class="filter-btn bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-4 py-2 rounded-lg border border-slate-700 transition-all">Test Instruments</button>
+      </div>
+    </div>
+
+    <!-- PRODUCT GRID CONTAINER -->
+    <div id="productGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Dynamically Populated by JavaScript -->
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="bg-slate-950 border-t border-slate-800 text-slate-400 py-12 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-8 h-8 bg-rose-600 rounded-lg flex items-center justify-center font-display font-bold text-white text-sm">3D</div>
+          <span class="font-display font-bold text-base text-white">THREE-D AGENCIES</span>
+        </div>
+        <p class="leading-relaxed text-slate-400 mb-4">
+          Leading distributor of heavy electrical cable accessories, wiring systems, tools, and instruments across Southern Africa since 1977.
+        </p>
+        <p class="text-slate-500">Reg. 1977/002341/07</p>
+      </div>
+
+      <div>
+        <h4 class="font-display font-bold text-white text-sm mb-4">Regional Branches</h4>
+        <ul class="space-y-2">
+          <li class="flex items-start gap-2"><i class="fa-solid fa-location-dot text-rose-500 mt-0.5"></i> <span>Johannesburg (Head Office &amp; Warehouse)</span></li>
+          <li class="flex items-start gap-2"><i class="fa-solid fa-location-dot text-rose-500 mt-0.5"></i> <span>Durban / Coastal Sales Desk</span></li>
+          <li class="flex items-start gap-2"><i class="fa-solid fa-location-dot text-rose-500 mt-0.5"></i> <span>Cape Town Regional Distribution</span></li>
+          <li class="flex items-start gap-2"><i class="fa-solid fa-globe text-orange-500 mt-0.5"></i> <span>SADEC Export Division</span></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-display font-bold text-white text-sm mb-4">Product Line Card</h4>
+        <ul class="space-y-2">
+          <li><a href="#" onclick="filterByCategory('Lugs')" class="hover:text-rose-400">Copper Compression Lugs</a></li>
+          <li><a href="#" onclick="filterByCategory('Heatshrink')" class="hover:text-rose-400">Dual Wall Heatshrink (3:1)</a></li>
+          <li><a href="#" onclick="filterByCategory('Tools')" class="hover:text-rose-400">HP240 Hydraulic Crimpers</a></li>
+          <li><a href="#" onclick="filterByCategory('Instruments')" class="hover:text-rose-400">UNI-T UT33+ &amp; UT593 Testers</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-display font-bold text-white text-sm mb-4">Customer Support</h4>
+        <p class="mb-3">Our technical sales team is available Monday – Friday (08:00 – 16:30 CAT).</p>
+        <button onclick="toggleDrawer('agentDrawer'); setAgentTab('chat');" class="w-full bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 py-2.5 rounded-xl font-semibold flex items-center justify-center gap-2 transition-all">
+          <i class="fa-solid fa-robot text-rose-400"></i> Open Technical Assistant
+        </button>
+      </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-slate-900 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>© 1977 – 2026 Three-D Agencies (Pty) Ltd. All Rights Reserved.</p>
+      <div class="flex gap-6">
+        <a href="#" class="hover:text-white">Privacy Policy</a>
+        <a href="#" class="hover:text-white">Terms of Trade</a>
+        <a href="#" class="hover:text-white">ISO Compliance</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- DRAWER 1: AI TECHNICAL ASSISTANT & BULK BOM IMPORTER                      -->
+  <!-- ========================================================================= -->
+  <div id="agentDrawer" class="fixed inset-0 z-50 pointer-events-none hidden">
+    <!-- BACKDROP OVERLAY -->
+    <div onclick="toggleDrawer('agentDrawer')" class="drawer-overlay absolute inset-0 opacity-100 transition-opacity"></div>
+    
+    <!-- DRAWER CONTENT PANEL -->
+    <aside class="absolute top-0 right-0 h-full w-full max-w-xl bg-slate-900 border-l border-slate-800 shadow-2xl flex flex-col pointer-events-auto transition-transform duration-300">
+      
+      <!-- DRAWER HEADER WITH TABS -->
+      <div class="p-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-gradient-to-br from-rose-600 to-orange-500 flex items-center justify-center text-white text-xs font-bold">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div>
+            <h3 class="font-display font-bold text-white text-sm leading-none">Three-D Technical Assistant</h3>
+            <span class="text-[10px] text-emerald-400 flex items-center gap-1 mt-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span> Offline Knowledge Engine Ready
+            </span>
+          </div>
+        </div>
+        <button onclick="toggleDrawer('agentDrawer')" class="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-800 transition-colors">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <!-- TAB SELECTION BUTTONS -->
+      <div class="grid grid-cols-2 bg-slate-950 border-b border-slate-800 p-1 gap-1 text-xs font-semibold">
+        <button id="tabBtnChat" onclick="setAgentTab('chat')" class="py-2.5 rounded-lg bg-slate-800 text-white shadow transition-all flex items-center justify-center gap-2">
+          <i class="fa-solid fa-comments text-rose-400"></i> Tech Spec Q&amp;A
+        </button>
+        <button id="tabBtnBom" onclick="setAgentTab('bom')" class="py-2.5 rounded-lg text-slate-400 hover:text-white transition-all flex items-center justify-center gap-2">
+          <i class="fa-solid fa-list-check text-orange-400"></i> Bulk BOM Converter
+        </button>
+      </div>
+
+      <!-- TAB 1: TECH SPEC CHAT ASSISTANT -->
+      <div id="tabContentChat" class="flex-1 flex flex-col overflow-hidden">
+        
+        <!-- MESSAGES CONTAINER -->
+        <div id="chatMessages" class="flex-1 p-4 overflow-y-auto space-y-4 text-xs">
+          <!-- WELCOME MESSAGE FROM BOT -->
+          <div class="flex gap-3 items-start">
+            <div class="w-7 h-7 rounded-full bg-rose-600 text-white flex items-center justify-center text-xs shrink-0 mt-0.5">
+              <i class="fa-solid fa-robot"></i>
+            </div>
+            <div class="bg-slate-800 border border-slate-700/80 p-3.5 rounded-2xl rounded-tl-none text-slate-200 max-w-[85%] leading-relaxed">
+              Hello! I am Three-D’s Technical Spec Assistant. I can help you with:
+              <ul class="list-disc pl-4 mt-2 space-y-1 text-slate-300">
+                <li>Matching crimping tools (e.g. <b>HP240</b>) to lug sizes</li>
+                <li>Heatshrink specs (Polyolefin 90°C vs PTFE 250°C)</li>
+                <li>UNI-T Multimeter selection (<b>UT33+</b> vs <b>UT593</b>)</li>
+                <li>Tool warranty, repair times &amp; regional shipping</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- QUICK PROMPT CHIPS -->
+        <div class="px-4 py-2 bg-slate-950 border-t border-slate-800 flex items-center gap-2 overflow-x-auto text-[11px] text-slate-300">
+          <span class="text-slate-500 font-semibold shrink-0">Try:</span>
+          <button onclick="sendQuickPrompt('Which tool crimps 120mm2 lugs?')" class="bg-slate-800 hover:bg-slate-700 px-2.5 py-1 rounded-full border border-slate-700 whitespace-nowrap transition-colors">120mm² Crimper?</button>
+          <button onclick="sendQuickPrompt('Recommend a multimeter for DIY home work')" class="bg-slate-800 hover:bg-slate-700 px-2.5 py-1 rounded-full border border-slate-700 whitespace-nowrap transition-colors">DIY Multimeter?</button>
+          <button onclick="sendQuickPrompt('Heatshrink shrink temperatures')" class="bg-slate-800 hover:bg-slate-700 px-2.5 py-1 rounded-full border border-slate-700 whitespace-nowrap transition-colors">Heatshrink Temps?</button>
+        </div>
+
+        <!-- CHAT INPUT FORM -->
+        <form onsubmit="handleChatSubmit(event)" class="p-3 bg-slate-950 border-t border-slate-800 flex gap-2">
+          <input 
+            type="text" 
+            id="chatInput" 
+            placeholder="Ask a technical or product question..." 
+            class="flex-1 bg-slate-900 text-xs text-white placeholder-slate-500 px-3.5 py-2.5 rounded-xl border border-slate-800 focus:outline-none focus:border-rose-500"
+          />
+          <button type="submit" class="bg-rose-600 hover:bg-rose-500 text-white text-xs px-4 py-2.5 rounded-xl font-semibold transition-colors">
+            Send
+          </button>
+        </form>
+
+      </div>
+
+      <!-- TAB 2: BULK BOM / SKU IMPORTER -->
+      <div id="tabContentBom" class="flex-1 p-4 overflow-y-auto hidden space-y-4 text-xs">
+        <div class="bg-slate-800/60 p-3.5 rounded-xl border border-slate-700/60">
+          <h4 class="font-bold text-white mb-1 flex items-center gap-2">
+            <i class="fa-solid fa-bolt text-rose-400"></i> Paste Raw Part List or Quote Sheet
+          </h4>
+          <p class="text-slate-400 leading-relaxed">
+            Copy text from your project spreadsheet or order document. Our client-side parser matches SKUs and formats an RFQ instantly.
+          </p>
+        </div>
+
+        <textarea 
+          id="bomInput" 
+          rows="5" 
+          placeholder="Paste SKUs here, e.g.:&#10;HP240 x 2&#10;UT33+ x 5&#10;120mm lug x 100&#10;Heatshrink 3:1 x 20m"
+          class="w-full bg-slate-950 text-slate-100 placeholder-slate-600 p-3 rounded-xl border border-slate-800 focus:outline-none focus:border-rose-500 font-mono text-xs"
+        ></textarea>
+
+        <button onclick="parseBOMText()" class="w-full bg-gradient-to-r from-orange-600 to-rose-600 hover:from-orange-500 hover:to-rose-500 text-white font-bold py-3 rounded-xl shadow transition-all flex items-center justify-center gap-2">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Parse BOM &amp; Generate RFQ
+        </button>
+
+        <!-- PARSED OUTPUT TABLE -->
+        <div id="bomResultContainer" class="hidden space-y-3 pt-2">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+            <span class="font-bold text-white">Parsed RFQ Preview</span>
+            <span id="bomParsedCount" class="text-rose-400 font-mono font-bold">0 Items</span>
+          </div>
+          
+          <div class="overflow-x-auto border border-slate-800 rounded-xl">
+            <table class="w-full text-left text-xs">
+              <thead class="bg-slate-950 text-slate-400 font-semibold border-b border-slate-800">
+                <tr>
+                  <th class="p-2.5">SKU / Item</th>
+                  <th class="p-2.5">Qty</th>
+                  <th class="p-2.5">Est. Price</th>
+                  <th class="p-2.5 text-right">Action</th>
+                </tr>
+              </thead>
+              <tbody id="bomResultTable" class="divide-y divide-slate-800 text-slate-300">
+                <!-- Dynamically Inserted -->
+              </tbody>
+            </table>
+          </div>
+
+          <button onclick="transferBOMToCart()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 rounded-xl transition-all flex items-center justify-center gap-2">
+            <i class="fa-solid fa-cart-plus"></i> Add All Parsed Items to Quote Drawer
+          </button>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- DRAWER 2: RFQ QUOTE BASKET DRAWER                                        -->
+  <!-- ========================================================================= -->
+  <div id="rfqDrawer" class="fixed inset-0 z-50 pointer-events-none hidden">
+    <div onclick="toggleDrawer('rfqDrawer')" class="drawer-overlay absolute inset-0 opacity-100 transition-opacity"></div>
+    
+    <aside class="absolute top-0 right-0 h-full w-full max-w-md bg-slate-900 border-l border-slate-800 shadow-2xl flex flex-col pointer-events-auto transition-transform duration-300">
+      <div class="p-4 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <i class="fa-solid fa-file-invoice-dollar text-rose-500 text-lg"></i>
+          <h3 class="font-display font-bold text-white text-base">Request For Quote (RFQ)</h3>
+        </div>
+        <button onclick="toggleDrawer('rfqDrawer')" class="text-slate-400 hover:text-white p-2">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div id="cartItemsContainer" class="flex-1 p-4 overflow-y-auto space-y-3">
+        <!-- Dynamically Inserted Cart Items -->
+      </div>
+
+      <div class="p-4 bg-slate-950 border-t border-slate-800 space-y-3">
+        <div class="flex justify-between items-center text-sm">
+          <span class="text-slate-400">Estimated Total Excl. VAT:</span>
+          <span id="cartTotal" class="font-display font-bold text-lg text-white">R0.00</span>
+        </div>
+        <button onclick="submitRFQOrder()" class="w-full bg-rose-600 hover:bg-rose-500 text-white font-bold py-3 rounded-xl shadow transition-all flex items-center justify-center gap-2">
+          <i class="fa-solid fa-paper-plane"></i> Submit RFQ to Sales Desk
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL: TRADE ACCOUNT REQUEST                                              -->
+  <!-- ========================================================================= -->
+  <div id="tradeModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div onclick="closeTradeModal()" class="drawer-overlay absolute inset-0"></div>
+    <div class="relative bg-slate-900 border border-slate-800 w-full max-w-lg rounded-2xl p-6 shadow-2xl z-10 space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <h3 class="font-display font-bold text-white text-lg flex items-center gap-2">
+          <i class="fa-solid fa-building text-rose-500"></i> Register for B2B Trade Account
+        </h3>
+        <button onclick="closeTradeModal()" class="text-slate-400 hover:text-white">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <form onsubmit="handleTradeSubmit(event)" class="space-y-3 text-xs">
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1">Company Registered Name *</label>
+          <input type="text" required placeholder="e.g. Acme Electrical Contractors (Pty) Ltd" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-slate-100 focus:border-rose-500 focus:outline-none"/>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">VAT Number</label>
+            <input type="text" placeholder="4090281920" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-slate-100 focus:border-rose-500 focus:outline-none"/>
+          </div>
+          <div>
+            <label class="block text-slate-300 font-semibold mb-1">Est. Monthly Spend (ZAR)</label>
+            <select class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-slate-100 focus:border-rose-500 focus:outline-none">
+              <option>R10,000 - R50,000</option>
+              <option>R50,000 - R200,000</option>
+              <option>R200,000+</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1">Primary Contact Email *</label>
+          <input type="email" required placeholder="procurement@acme-elec.co.za" class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-slate-100 focus:border-rose-500 focus:outline-none"/>
+        </div>
+        <div>
+          <label class="block text-slate-300 font-semibold mb-1">Preferred Sales Desk</label>
+          <select class="w-full bg-slate-950 border border-slate-800 rounded-lg p-2.5 text-slate-100 focus:border-rose-500 focus:outline-none">
+            <option>Gauteng / JHB Main Hub</option>
+            <option>Durban / Coastal Sales Desk</option>
+            <option>Cape Town Distribution Desk</option>
+            <option>SADEC Cross-Border Division</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full bg-gradient-to-r from-rose-600 to-orange-600 hover:from-rose-500 hover:to-orange-500 text-white font-bold py-3 rounded-xl transition-all shadow">
+          Submit Trade Registration Application
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- SUCCESS NOTIFICATION TOAST -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-800 border border-slate-700 text-slate-100 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div id="toastIcon" class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-sm">
+      <i class="fa-solid fa-check"></i>
+    </div>
+    <div>
+      <h4 id="toastTitle" class="font-bold text-xs text-white">Action Completed</h4>
+      <p id="toastMessage" class="text-[11px] text-slate-400">Your item has been processed.</p>
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT STATE MANAGEMENT & LOGIC                                       -->
+  <!-- ========================================================================= -->
+  <script>
+    // --- 1. PRODUCT DATABASE WITH LOCAL FOLDER IMAGES ---
+    const PRODUCTS = [
+      {
+        id: 'LUG-120-12',
+        sku: '120-12-LUG',
+        name: 'High Conductivity Lugs & Ferrules',
+        category: 'Lugs',
+        price: 48.50,
+        stock: 'In Stock - JHB Main Warehouse',
+        tags: ['120mm²', 'Heavy Duty', '99.9% High Conductivity Copper'],
+        desc: 'Precision engineered heavy-duty copper lug suitable for high-voltage panel building and distribution transformers.',
+        image: '3dee pictures/image_0.png'
+      },
+      {
+        id: 'HS-DW-19',
+        sku: 'DW-19/6-3:1',
+        name: 'Insulating Heatshrink Tubing (Polyolefin)',
+        category: 'Heatshrink',
+        price: 85.00,
+        stock: 'In Stock - Coastal Desk',
+        tags: ['3:1 Shrink Ratio', 'Waterproof Adhesive', 'Polyolefin'],
+        desc: 'Adhesive-lined heatshrink tubing providing complete moisture sealing and corrosion protection for external joints.',
+        image: '3dee pictures/image_1.png'
+      },
+      {
+        id: 'GLAND-WP-01',
+        sku: 'M20-CBL-GLD',
+        name: 'Weatherproof Cable Glands',
+        category: 'Cable Management',
+        price: 32.00,
+        stock: 'In Stock - JHB Main Warehouse',
+        tags: ['IP68 Waterproof', 'Nickel-Plated Brass', 'Strain Relief'],
+        desc: 'Heavy-duty industrial cable glands providing ingress protection and cable strain relief in harsh environments.',
+        image: '3dee pictures/image_2.png'
+      },
+      {
+        id: 'UNI-UT33P',
+        sku: 'UT33+',
+        name: 'UNI-T UT33+ DIY Digital Multimeter',
+        category: 'Instruments',
+        price: 495.00,
+        stock: 'In Stock - JHB Main Warehouse',
+        tags: ['CAT II 600V', 'Compact Palm Size', '2m Drop Test'],
+        desc: 'Durable ergonomic palm-sized digital multimeter ideal for DIY home electrical work and light commercial testing.',
+        image: '3dee pictures/image_3.png'
+      },
+      {
+        id: 'MAK-DRV-18V',
+        sku: 'DHF484Z',
+        name: 'Makita Cordless Power Tools Range',
+        category: 'Tools',
+        price: 2890.00,
+        stock: 'In Stock - JHB Main Warehouse',
+        tags: ['18V LXT', 'Brushless Motor', 'Heavy Duty'],
+        desc: 'Professional grade 18V brushless cordless drill driver engineered for demanding job-site drilling and driving.',
+        image: '3dee pictures/image_4.png'
+      },
+      {
+        id: 'HYD-HP240',
+        sku: 'HP240',
+        name: 'HP240 Hydraulic Crimping Tool',
+        category: 'Tools',
+        price: 3450.00,
+        stock: 'In Stock - JHB Main Warehouse',
+        tags: ['Hydraulic', '16-240mm²', 'Die Set Included'],
+        desc: 'Professional grade hydraulic hand crimper with 180-degree rotating head and automatic over-pressure safety valve.',
+        image: '3dee pictures/image_5.png'
+      }
+    ];
+
+    // --- 2. KNOWLEDGE BASE FOR TECHNICAL AGENT ---
+    const KNOWLEDGE_BASE = [
+      {
+        keywords: ['hp240', 'crimp', '120mm', 'tool lug'],
+        answer: "The **HP240 Hydraulic Crimper** is rated for copper lugs from 16mm² up to 240mm². It includes die sets for standard cable sizes (16, 25, 35, 50, 70, 95, 120, 150, 185, 240mm²)."
+      },
+      {
+        keywords: ['diy', 'multimeter', 'home', 'ut33'],
+        answer: "For basic home electrical testing or DIY work, we recommend the **UNI-T UT33+** palm-sized multimeter. It features drop protection, CAT II 600V rating, and clear digital readout."
+      },
+      {
+        keywords: ['ut593', 'certificate', 'compliance', 'professional'],
+        answer: "The **UNI-T UT593** is engineered for professional electrical contractors performing SANS 10142 compliance testing, measuring insulation resistance, loop impedance, and RCD trip times."
+      },
+      {
+        keywords: ['heatshrink', 'temp', 'temperature', 'shrink'],
+        answer: "Standard **Polyolefin heatshrink** shrinks at ~90°C with an operating range of -55°C to 125°C. For extreme high-heat industrial setups up to 250°C, choose **PTFE sleeving**."
+      },
+      {
+        keywords: ['repair', 'warranty', 'faulty'],
+        answer: "All **UNI-T instruments** carry a 12-month manufacturer warranty. Tools returned out of box with manufacturing defects are replaced immediately. Repair services are available at our JHB hub."
+      }
+    ];
+
+    // --- 3. STATE MANAGEMENT ---
+    let cart = [];
+    let currentCategory = 'All';
+    let parsedBomItems = [];
+
+    // --- 4. INITIALIZATION ---
+    window.onload = function() {
+      renderProducts();
+      updateCartUI();
+    };
+
+    // --- 5. PRODUCT RENDERING & FILTERING ---
+    function renderProducts() {
+      const grid = document.getElementById('productGrid');
+      const filtered = currentCategory === 'All' 
+        ? PRODUCTS 
+        : PRODUCTS.filter(p => p.category === currentCategory || (currentCategory === 'Cable Management' && p.category === 'Cable Management'));
+
+      document.getElementById('productCountBadge').innerText = `${filtered.length} Products`;
+
+      grid.innerHTML = filtered.map(p => `
+        <div class="bg-slate-800/90 border border-slate-700/80 rounded-2xl p-5 hover:border-slate-600 transition-all duration-300 flex flex-col justify-between group shadow-xl">
+          <div>
+            <!-- STOCK BADGE & SKU -->
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-[11px] font-semibold text-emerald-400 bg-emerald-950/60 border border-emerald-800/40 px-2.5 py-0.5 rounded-full">
+                ${p.stock}
+              </span>
+              <span class="text-[11px] font-mono text-slate-400">SKU: ${p.sku}</span>
+            </div>
+
+            <!-- PRODUCT IMAGE CONTAINER -->
+            <div class="h-44 w-full bg-white rounded-xl p-3 flex items-center justify-center mb-4 overflow-hidden group-hover:scale-[1.02] transition-transform">
+              <img src="${p.image}" alt="${p.name}" class="max-h-full max-w-full object-contain">
+            </div>
+
+            <!-- TAGS -->
+            <div class="flex flex-wrap gap-1.5 mb-2">
+              ${p.tags.map(t => `<span class="bg-slate-700/60 text-slate-300 text-[10px] font-medium px-2 py-0.5 rounded">${t}</span>`).join('')}
+            </div>
+
+            <!-- TITLE & DESC -->
+            <h3 class="font-display font-bold text-white text-base group-hover:text-rose-400 transition-colors">${p.name}</h3>
+            <p class="text-slate-400 text-xs mt-1.5 leading-relaxed line-clamp-2">${p.desc}</p>
+          </div>
+
+          <!-- PRICE & ACTION BUTTON -->
+          <div class="pt-4 border-t border-slate-700/60 mt-4 flex items-center justify-between">
+            <div>
+              <span class="text-[10px] text-slate-400 uppercase font-semibold block">List Price Excl. VAT</span>
+              <span class="font-display font-extrabold text-white text-lg">R${p.price.toFixed(2)}</span>
+            </div>
+            <button onclick="addToCart('${p.id}')" class="bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow transition-all flex items-center gap-1.5">
+              <i class="fa-solid fa-plus"></i> Add to RFQ
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterByCategory(category) {
+      currentCategory = category;
+      document.querySelectorAll('#filterBtnGroup .filter-btn').forEach(btn => {
+        btn.classList.remove('bg-rose-600', 'text-white');
+        btn.classList.add('bg-slate-800', 'text-slate-300');
+      });
+      event.target.classList.remove('bg-slate-800', 'text-slate-300');
+      event.target.classList.add('bg-rose-600', 'text-white');
+      renderProducts();
+    }
+
+    // --- 6. PREDICTIVE INSTANT SEARCH ---
+    function handleSearch(query) {
+      const resultsContainer = document.getElementById('searchResults');
+      const clearBtn = document.getElementById('clearSearchBtn');
+      
+      if (!query.trim()) {
+        resultsContainer.classList.add('hidden');
+        clearBtn.classList.add('hidden');
+        return;
+      }
+      
+      clearBtn.classList.remove('hidden');
+      const q = query.toLowerCase();
+
+      const matched = PRODUCTS.filter(p => 
+        p.name.toLowerCase().includes(q) || 
+        p.sku.toLowerCase().includes(q) || 
+        p.tags.some(t => t.toLowerCase().includes(q))
+      );
+
+      if (matched.length === 0) {
+        resultsContainer.innerHTML = `<div class="p-4 text-xs text-slate-400 text-center">No catalog items matched "${query}"</div>`;
+      } else {
+        resultsContainer.innerHTML = matched.map(p => `
+          <div onclick="quickSelectSearchItem('${p.id}')" class="p-3 hover:bg-slate-700/80 cursor-pointer border-b border-slate-700/50 flex items-center justify-between transition-colors">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 bg-white rounded-lg p-1 flex items-center justify-center shrink-0">
+                <img src="${p.image}" alt="${p.name}" class="max-h-full max-w-full object-contain">
+              </div>
+              <div>
+                <div class="font-bold text-white text-xs">${p.name}</div>
+                <div class="text-[10px] text-slate-400">SKU: ${p.sku} • ${p.category}</div>
+              </div>
+            </div>
+            <span class="text-xs font-bold text-rose-400">R${p.price.toFixed(2)}</span>
+          </div>
+        `).join('');
+      }
+
+      resultsContainer.classList.remove('hidden');
+    }
+
+    function clearSearch() {
+      document.getElementById('searchInput').value = '';
+      document.getElementById('searchResults').classList.add('hidden');
+      document.getElementById('clearSearchBtn').classList.add('hidden');
+    }
+
+    function quickSelectSearchItem(id) {
+      addToCart(id);
+      clearSearch();
+      toggleDrawer('rfqDrawer');
+    }
+
+    // --- 7. CART / RFQ DRAWER MANAGEMENT ---
+    function addToCart(id, qty = 1) {
+      const item = PRODUCTS.find(p => p.id === id);
+      if (!item) return;
+
+      const existing = cart.find(c => c.id === id);
+      if (existing) {
+        existing.qty += qty;
+      } else {
+        cart.push({ ...item, qty });
+      }
+
+      updateCartUI();
+      showToast('Item Added to RFQ', `${item.name} (${qty}) added to quote basket.`);
+    }
+
+    function updateCartQty(id, delta) {
+      const item = cart.find(c => c.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) {
+        cart = cart.filter(c => c.id !== id);
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+      document.getElementById('cartBadge').innerText = totalCount;
+
+      const container = document.getElementById('cartItemsContainer');
+      
+      if (cart.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-12 text-slate-500">
+            <i class="fa-solid fa-file-circle-minus text-4xl mb-3 block"></i>
+            <p class="text-xs">Your Quote Basket is empty.</p>
+          </div>
+        `;
+        document.getElementById('cartTotal').innerText = 'R0.00';
+        return;
+      }
+
+      let total = 0;
+      container.innerHTML = cart.map(item => {
+        const itemTotal = item.price * item.qty;
+        total += itemTotal;
+        return `
+          <div class="bg-slate-800 p-3 rounded-xl border border-slate-700 flex items-center justify-between gap-3">
+            <div class="flex-1 min-w-0">
+              <div class="font-bold text-white text-xs truncate">${item.name}</div>
+              <div class="text-[10px] text-slate-400">SKU: ${item.sku}</div>
+              <div class="text-xs font-semibold text-rose-400 mt-1">R${item.price.toFixed(2)} each</div>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button onclick="updateCartQty('${item.id}', -1)" class="w-6 h-6 rounded bg-slate-700 text-white text-xs font-bold flex items-center justify-center hover:bg-slate-600">-</button>
+              <span class="text-xs font-bold text-white font-mono w-4 text-center">${item.qty}</span>
+              <button onclick="updateCartQty('${item.id}', 1)" class="w-6 h-6 rounded bg-slate-700 text-white text-xs font-bold flex items-center justify-center hover:bg-slate-600">+</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('cartTotal').innerText = `R${total.toFixed(2)}`;
+    }
+
+    function submitRFQOrder() {
+      if (cart.length === 0) {
+        showToast('Basket Empty', 'Please add items before submitting an RFQ.');
+        return;
+      }
+      cart = [];
+      updateCartUI();
+      toggleDrawer('rfqDrawer');
+      showToast('RFQ Submitted Successfully', 'Sales desk reference #TD-RFQ-2026 has been generated.');
+    }
+
+    // --- 8. TECHNICAL AGENT & BOM CONVERTER ---
+    function setAgentTab(tab) {
+      const chatTab = document.getElementById('tabContentChat');
+      const bomTab = document.getElementById('tabContentBom');
+      const btnChat = document.getElementById('tabBtnChat');
+      const btnBom = document.getElementById('tabBtnBom');
+
+      if (tab === 'chat') {
+        chatTab.classList.remove('hidden');
+        bomTab.classList.add('hidden');
+        btnChat.className = "py-2.5 rounded-lg bg-slate-800 text-white shadow transition-all flex items-center justify-center gap-2";
+        btnBom.className = "py-2.5 rounded-lg text-slate-400 hover:text-white transition-all flex items-center justify-center gap-2";
+      } else {
+        chatTab.classList.add('hidden');
+        bomTab.classList.remove('hidden');
+        btnBom.className = "py-2.5 rounded-lg bg-slate-800 text-white shadow transition-all flex items-center justify-center gap-2";
+        btnChat.className = "py-2.5 rounded-lg text-slate-400 hover:text-white transition-all flex items-center justify-center gap-2";
+      }
+    }
+
+    function handleChatSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById('chatInput');
+      const val = input.value.trim();
+      if (!val) return;
+
+      appendChatMessage(val, 'user');
+      input.value = '';
+
+      setTimeout(() => {
+        const response = matchKnowledgeBase(val);
+        appendChatMessage(response, 'bot');
+      }, 300);
+    }
+
+    function sendQuickPrompt(promptText) {
+      appendChatMessage(promptText, 'user');
+      setTimeout(() => {
+        const response = matchKnowledgeBase(promptText);
+        appendChatMessage(response, 'bot');
+      }, 300);
+    }
+
+    function appendChatMessage(text, sender) {
+      const box = document.getElementById('chatMessages');
+      const div = document.createElement('div');
+      
+      if (sender === 'user') {
+        div.className = 'flex justify-end';
+        div.innerHTML = `
+          <div class="bg-rose-600 text-white p-3 rounded-2xl rounded-tr-none text-xs max-w-[85%] leading-relaxed">
+            ${text}
+          </div>
+        `;
+      } else {
+        div.className = 'flex gap-3 items-start';
+        div.innerHTML = `
+          <div class="w-7 h-7 rounded-full bg-rose-600 text-white flex items-center justify-center text-xs shrink-0 mt-0.5">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <div class="bg-slate-800 border border-slate-700/80 p-3.5 rounded-2xl rounded-tl-none text-slate-200 max-w-[85%] leading-relaxed">
+            ${text}
+          </div>
+        `;
+      }
+      
+      box.appendChild(div);
+      box.scrollTop = box.scrollHeight;
+    }
+
+    function matchKnowledgeBase(query) {
+      const q = query.toLowerCase();
+      let bestMatch = null;
+      let highestScore = 0;
+
+      KNOWLEDGE_BASE.forEach(kb => {
+        let score = 0;
+        kb.keywords.forEach(kw => {
+          if (q.includes(kw)) score++;
+        });
+        if (score > highestScore) {
+          highestScore = score;
+          bestMatch = kb.answer;
+        }
+      });
+
+      if (bestMatch) return bestMatch;
+      return "Thank you for your question. For custom non-standard specifications or technical drawings, please contact our engineering desk at **sales@three-d.co.za** or **+27 (11) 392-3804**.";
+    }
+
+    // --- BOM PARSER LOGIC ---
+    function parseBOMText() {
+      const raw = document.getElementById('bomInput').value.trim();
+      if (!raw) {
+        showToast('BOM Input Empty', 'Please paste plain text SKU lines to parse.');
+        return;
+      }
+
+      const lines = raw.split('\n');
+      parsedBomItems = [];
+
+      lines.forEach(line => {
+        if (!line.trim()) return;
+        
+        // Find matching product from catalog
+        const found = PRODUCTS.find(p => 
+          line.toLowerCase().includes(p.sku.toLowerCase()) || 
+          line.toLowerCase().includes(p.name.toLowerCase().split(' ')[0])
+        );
+
+        // Extract quantity if present
+        const qtyMatch = line.match(/\b\d+\b/);
+        const qty = qtyMatch ? parseInt(qtyMatch[0]) : 1;
+
+        if (found) {
+          parsedBomItems.push({ ...found, parsedQty: qty });
+        }
+      });
+
+      const container = document.getElementById('bomResultContainer');
+      const table = document.getElementById('bomResultTable');
+      
+      document.getElementById('bomParsedCount').innerText = `${parsedBomItems.length} SKUs Identified`;
+
+      if (parsedBomItems.length === 0) {
+        table.innerHTML = `<tr><td colspan="4" class="p-3 text-slate-400 text-center">No matching catalog SKUs recognized in text. Try including codes like HP240 or UT33+.</td></tr>`;
+      } else {
+        table.innerHTML = parsedBomItems.map(item => `
+          <tr class="hover:bg-slate-900/50">
+            <td class="p-2.5 font-bold text-white">${item.name} <div class="text-[10px] text-slate-500">${item.sku}</div></td>
+            <td class="p-2.5 font-mono">${item.parsedQty}</td>
+            <td class="p-2.5 text-rose-400 font-bold">R${(item.price * item.parsedQty).toFixed(2)}</td>
+            <td class="p-2.5 text-right">
+              <span class="text-[10px] text-emerald-400 font-semibold">Matched</span>
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      container.classList.remove('hidden');
+    }
+
+    function transferBOMToCart() {
+      if (parsedBomItems.length === 0) return;
+      parsedBomItems.forEach(item => {
+        addToCart(item.id, item.parsedQty);
+      });
+      toggleDrawer('agentDrawer');
+      toggleDrawer('rfqDrawer');
+    }
+
+    // --- 9. UI AUXILIARIES (DRAWERS & TOASTS) ---
+    function toggleDrawer(id) {
+      const drawer = document.getElementById(id);
+      if (drawer.classList.contains('hidden')) {
+        drawer.classList.remove('hidden');
+      } else {
+        drawer.classList.add('hidden');
+      }
+    }
+
+    function openTradeModal() {
+      document.getElementById('tradeModal').classList.remove('hidden');
+    }
+
+    function closeTradeModal() {
+      document.getElementById('tradeModal').classList.add('hidden');
+    }
+
+    function handleTradeSubmit(e) {
+      e.preventDefault();
+      closeTradeModal();
+      showToast('Trade Application Received', 'Our credit desk will reach out within 2 business hours.');
+    }
+
+    function showToast(title, message) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastTitle').innerText = title;
+      document.getElementById('toastMessage').innerText = message;
+      
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
