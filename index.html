@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Three-D Agencies | Premier B2B Electrical & Cable Accessories Partner</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1' y1='0' y2='1'%3E%3Cstop stop-color='%23e11d48'/%3E%3Cstop offset='1' stop-color='%23ea580c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%230f172a'/%3E%3Crect x='8' y='8' width='48' height='48' rx='12' fill='url(%23g)'/%3E%3Ctext x='50%25' y='52%25' text-anchor='middle' font-size='27' font-family='Arial, sans-serif' font-weight='700' fill='white'%3E3D%3C/text%3E%3C/svg%3E">
   
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -78,6 +79,21 @@
     </div>
   </div>
 
+  <div class="bg-slate-950 border-b border-amber-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-2 md:gap-4 text-xs text-slate-200">
+        <div class="flex items-center gap-3 flex-wrap">
+          <span class="inline-flex items-center rounded-full border border-amber-500/40 bg-amber-500/10 px-2.5 py-1 text-[10px] uppercase tracking-[0.2em] font-bold text-amber-300">Woza December</span>
+          <span class="font-medium text-slate-200">Save up to 25% on cable accessories, power tools and multimeters.</span>
+        </div>
+        <div class="flex items-center gap-3 justify-between md:justify-end">
+          <a href="specials.html" class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-amber-500 to-orange-600 px-3 py-1.5 font-bold text-slate-950 hover:scale-[1.02] transition-all">View Specials</a>
+          <div id="promoCountdown" class="flex items-center gap-2 text-white"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- STICKY MAIN HEADER -->
   <header class="sticky top-0 z-40 bg-slate-900/95 border-b border-slate-800 backdrop-blur-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -85,13 +101,7 @@
         
         <!-- BRAND LOGO -->
         <a href="#" class="flex items-center gap-3 group shrink-0">
-          <div class="w-11 h-11 bg-gradient-to-br from-rose-600 to-orange-500 rounded-xl flex items-center justify-center font-display font-extrabold text-white text-xl shadow-lg shadow-rose-900/40 group-hover:scale-105 transition-transform">
-            3D
-          </div>
-          <div class="flex flex-col">
-            <span class="font-display font-bold text-xl tracking-tight text-white leading-none">THREE-D</span>
-            <span class="text-[10px] font-semibold text-rose-500 uppercase tracking-widest mt-1">AGENCIES (PTY) LTD</span>
-          </div>
+          <img src="assets/logos/threed-cable-accessories-logo.webp" alt="Three-D Agencies logo" class="h-12 w-auto object-contain drop-shadow-lg">
         </a>
 
         <!-- PREDICTIVE INSTANT SEARCH BAR -->
@@ -229,11 +239,14 @@
           <a href="#" onclick="filterByCategory('All')" class="hover:text-white transition-colors">Browse Full Catalog</a>
         </div>
 
-        <div class="flex items-center gap-6">
+        <div class="flex items-center gap-4 lg:gap-6 flex-wrap">
           <span class="text-slate-500">Official Distributor:</span>
-          <span class="font-bold text-slate-300">UNI-T</span>
-          <span class="font-bold text-slate-300">SapiSelco</span>
-          <span class="font-bold text-slate-300">Makita</span>
+          <div class="flex items-center gap-4 flex-wrap">
+            <img src="assets/logos/uni-trend-logo.png" alt="UNI-T" class="h-6 w-auto object-contain opacity-90">
+            <img src="assets/logos/sapiselco-logo.png" alt="SapiSelco" class="h-7 w-auto object-contain opacity-90">
+            <img src="assets/logos/makita-logo.webp" alt="Makita" class="h-6 w-auto object-contain opacity-90">
+            <img src="assets/logos/patrax-glands-logo.webp" alt="Patrax Glands" class="h-7 w-auto object-contain opacity-90">
+          </div>
         </div>
       </nav>
     </div>
@@ -303,7 +316,7 @@
             <div class="space-y-4">
               <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/50 flex items-center gap-4">
                 <div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-1 shrink-0 overflow-hidden">
-                  <img src="3dee pictures/image_5.png" alt="HP240 Hydraulic Crimper" class="max-h-full max-w-full object-contain">
+                  <img src="assets/images/hydraulic-crimper.jpeg" alt="HP240 Hydraulic Crimper" class="max-h-full max-w-full object-contain">
                 </div>
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center justify-between">
@@ -316,7 +329,7 @@
 
               <div class="bg-slate-800/80 p-4 rounded-xl border border-slate-700/50 flex items-center gap-4">
                 <div class="w-16 h-16 bg-white rounded-lg flex items-center justify-center p-1 shrink-0 overflow-hidden">
-                  <img src="3dee pictures/image_3.png" alt="UNI-T UT33+ Multimeter" class="max-h-full max-w-full object-contain">
+                  <img src="assets/images/measuring-tools.png" alt="UNI-T UT33+ Multimeter" class="max-h-full max-w-full object-contain">
                 </div>
                 <div class="flex-1 min-w-0">
                   <div class="flex items-center justify-between">
@@ -375,13 +388,152 @@
 
   </main>
 
+  <!-- PRODUCT SPOTLIGHT: STRAIN RELIEF PLIERS -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 pb-16">
+    <div class="bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 rounded-3xl border border-slate-700/80 shadow-2xl overflow-hidden">
+      <div class="grid lg:grid-cols-2">
+        <div class="p-8 lg:p-12 flex items-center justify-center bg-[radial-gradient(circle_at_top,_rgba(225,29,72,0.18),_transparent_40%)]">
+          <div class="w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl">
+            <img src="assets/images/pliers.jpeg" alt="Strain Relief Pliers LY205" class="w-full h-full object-contain rounded-2xl">
+          </div>
+        </div>
+        <div class="p-8 lg:p-12 flex flex-col justify-center">
+          <div class="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-rose-400 font-bold mb-4">
+            <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+            Flagship Hand Tool
+          </div>
+          <h3 class="font-display font-bold text-3xl lg:text-4xl text-white leading-tight">Strain Relief Pliers <span class="text-rose-400">LY205</span></h3>
+          <p class="mt-4 text-slate-300 text-sm leading-relaxed">
+            Built for electrical installers and maintenance teams who need confident cable preparation, safe handling, and faster service work on live or panel wiring projects.
+          </p>
+
+          <div class="grid sm:grid-cols-2 gap-4 mt-6">
+            <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-4">
+              <div class="text-[10px] uppercase tracking-[0.18em] text-slate-400">Length</div>
+              <div class="font-display font-bold text-2xl text-white mt-2">180mm</div>
+            </div>
+            <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-4">
+              <div class="text-[10px] uppercase tracking-[0.18em] text-slate-400">Material</div>
+              <div class="font-display font-bold text-2xl text-white mt-2">Cr-V</div>
+            </div>
+            <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-4">
+              <div class="text-[10px] uppercase tracking-[0.18em] text-slate-400">Rating</div>
+              <div class="font-display font-bold text-2xl text-white mt-2">1000V</div>
+            </div>
+            <div class="bg-slate-800/80 border border-slate-700 rounded-xl p-4">
+              <div class="text-[10px] uppercase tracking-[0.18em] text-slate-400">Weight</div>
+              <div class="font-display font-bold text-2xl text-white mt-2">0.14kg</div>
+            </div>
+          </div>
+
+          <div class="mt-6 space-y-3 text-sm text-slate-300">
+            <div class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-400"></i> <span>Superior slip-resistant Tyre-Grip handle</span></div>
+            <div class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-400"></i> <span>Black magnetic tip for faster, cleaner cable handling</span></div>
+            <div class="flex items-center gap-3"><i class="fa-solid fa-circle-check text-emerald-400"></i> <span>23% strength saving with durable 54–58 HRC construction</span></div>
+          </div>
+
+          <div class="mt-8 flex flex-wrap gap-3">
+            <button onclick="addToCart('HYD-HP240')" class="bg-gradient-to-r from-rose-600 to-orange-600 text-white font-bold px-5 py-3 rounded-xl shadow-lg shadow-rose-950/40 hover:scale-[1.02] transition-all">Add to Quote</button>
+            <button onclick="toggleDrawer('agentDrawer'); setAgentTab('chat');" class="bg-slate-800 border border-slate-700 text-white font-semibold px-5 py-3 rounded-xl hover:bg-slate-700 transition-all">Ask the AI Assistant</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECIALS CAMPAIGN SECTION -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 pb-16">
+    <div class="rounded-[28px] border border-amber-500/30 bg-gradient-to-br from-amber-500/10 via-slate-900 to-rose-500/10 overflow-hidden shadow-[0_30px_80px_rgba(234,88,12,0.18)]">
+      <div class="grid lg:grid-cols-[1.2fr_0.8fr]">
+        <div class="p-6 lg:p-10">
+          <div class="flex flex-wrap items-center gap-3">
+            <div class="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-amber-500/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.25em] text-amber-300 font-bold">
+              <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+              Woza December
+            </div>
+            <div class="inline-flex items-center gap-2 rounded-full border border-rose-500/30 bg-rose-500/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.2em] text-rose-200 font-bold">
+              <i class="fa-solid fa-clock text-rose-300"></i>
+              Limited time offer
+            </div>
+          </div>
+
+          <h3 class="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white mt-5 leading-tight">
+            Build stronger jobs this season with <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-orange-400 to-rose-400">limited-time deals</span>
+          </h3>
+
+          <p class="mt-4 max-w-xl text-sm sm:text-base text-slate-300 leading-relaxed">
+            Bulk trade pricing, discounted essentials, and seasonal offers on cable management, power tools, and digital test equipment for contractors, electricians, and maintenance teams.
+          </p>
+
+          <div class="mt-6 flex flex-wrap items-center gap-3">
+            <div class="flex items-center gap-2 rounded-2xl border border-amber-400/30 bg-slate-950/50 px-3 py-2">
+              <span class="text-[10px] uppercase tracking-[0.2em] text-slate-400">Ends in</span>
+              <div id="specialsCountdown" class="flex items-center gap-2 text-white"></div>
+            </div>
+          </div>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <button onclick="toggleDrawer('agentDrawer'); setAgentTab('chat');" class="bg-gradient-to-r from-amber-500 to-orange-600 text-slate-950 font-black text-xs px-5 py-3 rounded-xl shadow-lg shadow-orange-900/40 transition-all hover:scale-[1.02]">
+              Get Special Pricing
+            </button>
+            <a href="assets/specials/cable-ties-and-high-qualit-power-tools-special.pdf" target="_blank" class="bg-slate-800 border border-slate-700 text-white font-semibold text-xs px-5 py-3 rounded-xl transition-all hover:bg-slate-700">
+              View Power Tools Offer
+            </a>
+          </div>
+
+          <div class="mt-8 grid sm:grid-cols-3 gap-3 text-left">
+            <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-4">
+              <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400">Offer Window</div>
+              <div class="font-display font-bold text-2xl text-white mt-2">12 Days</div>
+            </div>
+            <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-4">
+              <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400">Top Pick</div>
+              <div class="font-display font-bold text-2xl text-white mt-2">UNI-T</div>
+            </div>
+            <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-4">
+              <div class="text-[10px] uppercase tracking-[0.2em] text-slate-400">Best For</div>
+              <div class="font-display font-bold text-2xl text-white mt-2">Bulk</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-6 lg:p-10 bg-slate-950/30 border-l border-amber-500/20">
+          <div class="space-y-5">
+            <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-5">
+              <div class="flex items-center justify-between gap-4 mb-3">
+                <span class="bg-amber-500/15 text-amber-300 border border-amber-500/30 text-[10px] uppercase tracking-[0.2em] font-bold px-2.5 py-1 rounded-full">Power Tools</span>
+                <span class="text-emerald-400 text-[10px] uppercase tracking-[0.2em] font-bold">Limited Stock</span>
+              </div>
+              <h4 class="font-display font-bold text-xl text-white">Cable Ties & High-Quality Power Tools</h4>
+              <p class="text-slate-400 text-sm mt-2 leading-relaxed">Seasonal pricing on essential cable accessories and jobsite tools for faster installs and better margins.</p>
+              <a href="assets/specials/cable-ties-and-high-qualit-power-tools-special.pdf" target="_blank" class="mt-4 inline-flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white text-xs font-bold px-3.5 py-2.5 rounded-xl transition-all">
+                <i class="fa-solid fa-file-pdf text-rose-400"></i> View Offer PDF
+              </a>
+            </div>
+
+            <div class="bg-slate-800/80 border border-slate-700 rounded-2xl p-5">
+              <div class="flex items-center justify-between gap-4 mb-3">
+                <span class="bg-rose-500/15 text-rose-300 border border-rose-500/30 text-[10px] uppercase tracking-[0.2em] font-bold px-2.5 py-1 rounded-full">Test Equipment</span>
+                <span class="text-emerald-400 text-[10px] uppercase tracking-[0.2em] font-bold">Trade Offer</span>
+              </div>
+              <h4 class="font-display font-bold text-xl text-white">UNI-T Digital Multimeter Special</h4>
+              <p class="text-slate-400 text-sm mt-2 leading-relaxed">Reliable measurement gear for installers, workshop teams, and maintenance departments at special pricing.</p>
+              <a href="assets/specials/uni-trend-digital-multimeter-special.pdf" target="_blank" class="mt-4 inline-flex items-center gap-2 bg-slate-700 hover:bg-slate-600 text-white text-xs font-bold px-3.5 py-2.5 rounded-xl transition-all">
+                <i class="fa-solid fa-file-pdf text-rose-400"></i> View Offer PDF
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FOOTER -->
   <footer class="bg-slate-950 border-t border-slate-800 text-slate-400 py-12 text-xs">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
       <div>
-        <div class="flex items-center gap-2 mb-4">
-          <div class="w-8 h-8 bg-rose-600 rounded-lg flex items-center justify-center font-display font-bold text-white text-sm">3D</div>
-          <span class="font-display font-bold text-base text-white">THREE-D AGENCIES</span>
+        <div class="flex items-center gap-3 mb-4">
+          <img src="assets/logos/threed-cable-accessories-logo.webp" alt="Three-D Agencies" class="h-10 w-auto object-contain">
         </div>
         <p class="leading-relaxed text-slate-400 mb-4">
           Leading distributor of heavy electrical cable accessories, wiring systems, tools, and instruments across Southern Africa since 1977.
@@ -652,6 +804,53 @@
     </div>
   </div>
 
+  <!-- PRODUCT DETAIL MODAL -->
+  <div id="productDetailModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+    <div onclick="closeProductDetail()" class="drawer-overlay absolute inset-0"></div>
+    <div class="relative bg-slate-900 border border-slate-800 w-full max-w-5xl rounded-3xl shadow-2xl z-10 overflow-hidden">
+      <div class="flex items-center justify-between border-b border-slate-800 p-4">
+        <h3 id="detailTitle" class="font-display font-bold text-white text-xl">Product Details</h3>
+        <button onclick="closeProductDetail()" class="text-slate-400 hover:text-white p-2 rounded-lg hover:bg-slate-800 transition-colors">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <div class="grid lg:grid-cols-2">
+        <div class="p-6 bg-slate-950/60 border-r border-slate-800">
+          <div class="bg-white rounded-2xl p-6 flex items-center justify-center min-h-[320px]">
+            <img id="detailImage" src="" alt="Product image" class="max-h-[300px] w-auto object-contain">
+          </div>
+        </div>
+
+        <div class="p-6 space-y-5">
+          <div>
+            <div id="detailCategory" class="text-[10px] uppercase tracking-[0.2em] text-rose-400 font-bold">Category</div>
+            <div id="detailSku" class="mt-2 text-xs text-slate-400 font-mono">SKU</div>
+          </div>
+
+          <p id="detailDescription" class="text-slate-300 text-sm leading-relaxed"></p>
+
+          <div class="grid grid-cols-2 gap-3" id="detailSpecsGrid"></div>
+
+          <div class="border-t border-slate-800 pt-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-[10px] uppercase tracking-[0.18em] text-slate-400">Price Excl. VAT</div>
+                <div id="detailPrice" class="font-display font-bold text-3xl text-white mt-1">R0.00</div>
+              </div>
+              <span id="detailStock" class="text-xs font-semibold text-emerald-400 bg-emerald-950/50 border border-emerald-800/40 px-3 py-1.5 rounded-full">In Stock</span>
+            </div>
+          </div>
+
+          <div class="flex gap-3 pt-2">
+            <button id="detailAddToQuote" class="flex-1 bg-gradient-to-r from-rose-600 to-orange-600 hover:from-rose-500 hover:to-orange-500 text-white font-bold py-3 rounded-xl shadow-lg transition-all">Add to Quote</button>
+            <button onclick="closeProductDetail()" class="flex-1 bg-slate-800 border border-slate-700 hover:bg-slate-700 text-white font-semibold py-3 rounded-xl transition-all">Keep Browsing</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- SUCCESS NOTIFICATION TOAST -->
   <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-800 border border-slate-700 text-slate-100 px-4 py-3 rounded-xl shadow-2xl flex items-center gap-3 translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
     <div id="toastIcon" class="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center font-bold text-sm">
@@ -678,7 +877,13 @@
         stock: 'In Stock - JHB Main Warehouse',
         tags: ['120mm²', 'Heavy Duty', '99.9% High Conductivity Copper'],
         desc: 'Precision engineered heavy-duty copper lug suitable for high-voltage panel building and distribution transformers.',
-        image: '3dee pictures/image_0.png'
+        image: 'assets/images/copper-lugs.jpeg',
+        specs: [
+          ['Material', 'Electrolytic Copper'],
+          ['Application', 'Power Distribution'],
+          ['Cable Range', '120mm²'],
+          ['Finish', 'Tin Plated']
+        ]
       },
       {
         id: 'HS-DW-19',
@@ -689,7 +894,13 @@
         stock: 'In Stock - Coastal Desk',
         tags: ['3:1 Shrink Ratio', 'Waterproof Adhesive', 'Polyolefin'],
         desc: 'Adhesive-lined heatshrink tubing providing complete moisture sealing and corrosion protection for external joints.',
-        image: '3dee pictures/image_1.png'
+        image: 'assets/images/miscellaneous.png',
+        specs: [
+          ['Shrink Ratio', '3:1'],
+          ['Temp Range', '-55°C to 125°C'],
+          ['Wall Type', 'Adhesive Lined'],
+          ['Use', 'Joint Sealing']
+        ]
       },
       {
         id: 'GLAND-WP-01',
@@ -700,7 +911,13 @@
         stock: 'In Stock - JHB Main Warehouse',
         tags: ['IP68 Waterproof', 'Nickel-Plated Brass', 'Strain Relief'],
         desc: 'Heavy-duty industrial cable glands providing ingress protection and cable strain relief in harsh environments.',
-        image: '3dee pictures/image_2.png'
+        image: 'assets/images/ring-terminals.png',
+        specs: [
+          ['Protection', 'IP68'],
+          ['Material', 'Nickel Brass'],
+          ['Use', 'Outdoor & Panel'],
+          ['Fixing', 'Threaded Entry']
+        ]
       },
       {
         id: 'UNI-UT33P',
@@ -711,7 +928,13 @@
         stock: 'In Stock - JHB Main Warehouse',
         tags: ['CAT II 600V', 'Compact Palm Size', '2m Drop Test'],
         desc: 'Durable ergonomic palm-sized digital multimeter ideal for DIY home electrical work and light commercial testing.',
-        image: '3dee pictures/image_3.png'
+        image: 'assets/images/measuring-tools.png',
+        specs: [
+          ['Rating', 'CAT II 600V'],
+          ['Display', 'Digital LCD'],
+          ['Use Case', 'DIY & Light Trade'],
+          ['Safety', 'Drop Protected']
+        ]
       },
       {
         id: 'MAK-DRV-18V',
@@ -722,7 +945,13 @@
         stock: 'In Stock - JHB Main Warehouse',
         tags: ['18V LXT', 'Brushless Motor', 'Heavy Duty'],
         desc: 'Professional grade 18V brushless cordless drill driver engineered for demanding job-site drilling and driving.',
-        image: '3dee pictures/image_4.png'
+        image: 'assets/images/crimpers.jpeg',
+        specs: [
+          ['System', '18V LXT'],
+          ['Motor', 'Brushless'],
+          ['Use', 'Site Drilling / Driving'],
+          ['Build', 'Heavy Duty']
+        ]
       },
       {
         id: 'HYD-HP240',
@@ -733,7 +962,13 @@
         stock: 'In Stock - JHB Main Warehouse',
         tags: ['Hydraulic', '16-240mm²', 'Die Set Included'],
         desc: 'Professional grade hydraulic hand crimper with 180-degree rotating head and automatic over-pressure safety valve.',
-        image: '3dee pictures/image_5.png'
+        image: 'assets/images/hydraulic-crimper.jpeg',
+        specs: [
+          ['Range', '16-240mm²'],
+          ['Head', '180° Rotating'],
+          ['Type', 'Hydraulic Hand Crimper'],
+          ['Safety', 'Overpressure Relief']
+        ]
       }
     ];
 
@@ -808,14 +1043,19 @@
           </div>
 
           <!-- PRICE & ACTION BUTTON -->
-          <div class="pt-4 border-t border-slate-700/60 mt-4 flex items-center justify-between">
+          <div class="pt-4 border-t border-slate-700/60 mt-4 space-y-3">
             <div>
               <span class="text-[10px] text-slate-400 uppercase font-semibold block">List Price Excl. VAT</span>
               <span class="font-display font-extrabold text-white text-lg">R${p.price.toFixed(2)}</span>
             </div>
-            <button onclick="addToCart('${p.id}')" class="bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold px-4 py-2.5 rounded-xl shadow transition-all flex items-center gap-1.5">
-              <i class="fa-solid fa-plus"></i> Add to RFQ
-            </button>
+            <div class="flex gap-2">
+              <button onclick="openProductDetail('${p.id}')" class="flex-1 bg-slate-700 hover:bg-slate-600 text-white text-xs font-bold px-3 py-2.5 rounded-xl border border-slate-600 transition-all">
+                View Details
+              </button>
+              <button onclick="addToCart('${p.id}')" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white text-xs font-bold px-3 py-2.5 rounded-xl shadow transition-all flex items-center justify-center gap-1.5">
+                <i class="fa-solid fa-plus"></i> RFQ
+              </button>
+            </div>
           </div>
         </div>
       `).join('');
@@ -964,7 +1204,43 @@
       showToast('RFQ Submitted Successfully', 'Sales desk reference #TD-RFQ-2026 has been generated.');
     }
 
-    // --- 8. TECHNICAL AGENT & BOM CONVERTER ---
+    // --- 8. PRODUCT DETAIL MODAL ---
+    function openProductDetail(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      document.getElementById('detailTitle').textContent = product.name;
+      document.getElementById('detailCategory').textContent = product.category;
+      document.getElementById('detailSku').textContent = `SKU: ${product.sku}`;
+      document.getElementById('detailDescription').textContent = product.desc;
+      document.getElementById('detailPrice').textContent = `R${product.price.toFixed(2)}`;
+      document.getElementById('detailStock').textContent = product.stock;
+      document.getElementById('detailImage').src = product.image;
+      document.getElementById('detailImage').alt = product.name;
+
+      const specsGrid = document.getElementById('detailSpecsGrid');
+      specsGrid.innerHTML = product.specs.map(([label, value]) => `
+        <div class="bg-slate-800 border border-slate-700 rounded-xl p-3">
+          <div class="text-[10px] uppercase tracking-[0.15em] text-slate-400">${label}</div>
+          <div class="font-bold text-white mt-2 text-sm">${value}</div>
+        </div>
+      `).join('');
+
+      const addBtn = document.getElementById('detailAddToQuote');
+      addBtn.onclick = function() {
+        addToCart(product.id);
+        closeProductDetail();
+        toggleDrawer('rfqDrawer');
+      };
+
+      document.getElementById('productDetailModal').classList.remove('hidden');
+    }
+
+    function closeProductDetail() {
+      document.getElementById('productDetailModal').classList.add('hidden');
+    }
+
+    // --- 9. TECHNICAL AGENT & BOM CONVERTER ---
     function setAgentTab(tab) {
       const chatTab = document.getElementById('tabContentChat');
       const bomTab = document.getElementById('tabContentBom');
@@ -1036,6 +1312,32 @@
 
     function matchKnowledgeBase(query) {
       const q = query.toLowerCase();
+
+      if (q.includes('strain relief') || q.includes('pliers') || q.includes('ly205')) {
+        return "For cable prep and strain relief, the best match is **Strain Relief Pliers LY205**. It is **1000V rated**, **180mm**, **Cr-V steel**, and has a **Tyre-Grip handle** and **black magnetic tip**. It is ideal for electricians and maintenance teams doing fast, controlled cable preparation.";
+      }
+
+      if (q.includes('120mm') || q.includes('120mm²') || q.includes('120mm2') || q.includes('crimper') || q.includes('lug')) {
+        const hp = PRODUCTS.find(p => p.id === 'HYD-HP240');
+        const lug = PRODUCTS.find(p => p.id === 'LUG-120-12');
+        return `For a **120mm² cable lug application**, I recommend the **${hp.name}** together with the **${lug.name}**. This pairing is suitable for larger power distribution work and bulk electrical installs. ${hp.name} is priced at **R${hp.price.toFixed(2)}**.`;
+      }
+
+      if (q.includes('heatshrink') || q.includes('shrink tubing') || q.includes('insulation')) {
+        const hs = PRODUCTS.find(p => p.id === 'HS-DW-19');
+        return `For joint sealing and insulation, I recommend **${hs.name}**. It gives a **3:1 shrink ratio**, **adhesive-lined protection**, and is ideal for moisture-resistant electrical terminations and outdoor cable work.`;
+      }
+
+      if (q.includes('multimeter') || q.includes('meter') || q.includes('ut33') || q.includes('diy')) {
+        const meter = PRODUCTS.find(p => p.id === 'UNI-UT33P');
+        return `For everyday electrical testing and trade use, the best fit is **${meter.name}**. It is compact, safe for **CAT II 600V**, and ideal for light commercial work and maintenance checks.`;
+      }
+
+      if (q.includes('terminal') || q.includes('connector') || q.includes('ring terminal')) {
+        const terminal = PRODUCTS.find(p => p.id === 'LUG-120-12');
+        return `For terminal and connection work, start with **${terminal.name}** and pair it with the correct heatshrink or gland kit depending on environment. The right combination depends on cable size, insulation, and installation conditions.`;
+      }
+
       let bestMatch = null;
       let highestScore = 0;
 
@@ -1051,7 +1353,9 @@
       });
 
       if (bestMatch) return bestMatch;
-      return "Thank you for your question. For custom non-standard specifications or technical drawings, please contact our engineering desk at **sales@three-d.co.za** or **+27 (11) 392-3804**.";
+
+      const topProducts = PRODUCTS.slice(0, 3).map(p => `**${p.name}**`).join(', ');
+      return `I can help with tool matching and BOM selection. Based on your request, I’d start with ${topProducts}. For a custom recommendation, tell me the cable size, project type, or required voltage.`;
     }
 
     // --- BOM PARSER LOGIC ---
@@ -1152,6 +1456,48 @@
         toast.classList.add('translate-y-20', 'opacity-0');
       }, 3500);
     }
+
+    function renderCountdown(targetId, targetClass = 'text-white') {
+      const countdown = document.getElementById(targetId);
+      if (!countdown) return;
+
+      const deadline = new Date();
+      deadline.setDate(deadline.getDate() + 12);
+      deadline.setHours(23, 59, 59, 999);
+
+      const diff = Math.max(0, deadline - new Date());
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdown.innerHTML = `
+        <div class="min-w-[44px] rounded-lg bg-slate-800 border border-slate-700 px-2 py-1 text-center">
+          <div class="text-[8px] uppercase tracking-[0.18em] text-slate-400">Days</div>
+          <div class="font-display font-bold text-lg text-amber-300">${days}</div>
+        </div>
+        <div class="min-w-[44px] rounded-lg bg-slate-800 border border-slate-700 px-2 py-1 text-center">
+          <div class="text-[8px] uppercase tracking-[0.18em] text-slate-400">Hrs</div>
+          <div class="font-display font-bold text-lg text-orange-300">${String(hours).padStart(2, '0')}</div>
+        </div>
+        <div class="min-w-[44px] rounded-lg bg-slate-800 border border-slate-700 px-2 py-1 text-center">
+          <div class="text-[8px] uppercase tracking-[0.18em] text-slate-400">Min</div>
+          <div class="font-display font-bold text-lg text-rose-300">${String(minutes).padStart(2, '0')}</div>
+        </div>
+        <div class="min-w-[44px] rounded-lg bg-slate-800 border border-slate-700 px-2 py-1 text-center">
+          <div class="text-[8px] uppercase tracking-[0.18em] text-slate-400">Sec</div>
+          <div class="font-display font-bold text-lg text-white">${String(seconds).padStart(2, '0')}</div>
+        </div>
+      `;
+    }
+
+    function updateSpecialsCountdown() {
+      renderCountdown('specialsCountdown');
+      renderCountdown('promoCountdown');
+    }
+
+    updateSpecialsCountdown();
+    setInterval(updateSpecialsCountdown, 1000);
   </script>
 </body>
 </html>
